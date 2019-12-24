@@ -41,8 +41,8 @@ class InViewManager {
 
     const hasHeight = options?.ignoreHeight ? true : height;
 
-    return hasHeight
-      && (bottom > -boundary && top < window.innerHeight + boundary);  }
+    return hasHeight && bottom > -boundary && top < window.innerHeight + boundary;
+  }
 
   init() {
     // event phase to make measurements of the dom
@@ -61,7 +61,7 @@ class InViewManager {
       currentOptions = {
         ...currentOptions,
         ...options,
-      }
+      };
 
       if (!callbacksSet.has(callback)) {
         callbacksSet.add(callback);
@@ -70,7 +70,7 @@ class InViewManager {
       const callbacksSet = callback ? new Set([callback]) : new Set();
       this.elementsMap.set(element, {
         callbacksSet,
-        options
+        options,
       });
     }
   }

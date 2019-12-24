@@ -26,6 +26,7 @@
     "babel-loader": "^8.0.6",
     "express": "^4.17.1",
     "http-proxy-middleware": "^0.20.0",
+    "prettier": "^1.19.1",
     "typescript": "^3.7.3",
     "webpack": "^4.41.4",
     "webpack-bundle-analyzer": "^3.6.0",
