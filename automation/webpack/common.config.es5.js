@@ -18,14 +18,14 @@ module.exports = {
   // this outputs source maps to the js folder
   devtool: 'source-map',
 
-  mode: 'production',
+  mode: 'development',
 
   entry: {
     app: ['./app/app.ts'],
   },
 
   output: {
-    path: path.resolve(__dirname, './dist/js/'),
+    path: path.resolve(__dirname, '../../dist/js/'),
     chunkFilename: '[name].js',
     filename: '[name].js',
     publicPath: '/dist/js/',
@@ -36,7 +36,7 @@ module.exports = {
       {
         test: /\.(js|ts)x?$/,
         loader: 'babel-loader',
-        include: [path.resolve(__dirname, './app')],
+        include: [path.resolve(__dirname, '../../app')],
         exclude: /node_modules/,
       },
       // {
@@ -54,6 +54,7 @@ module.exports = {
     // react: 'React',
     // 'react-dom': 'ReactDom',
   },
+  plugins: [],
   // plugins: [
   //   new webpack.DefinePlugin({
   //     __DEVELOPMENT__: false,

@@ -1,7 +1,22 @@
-node_modules
+# System
+._*
 .DS_Store
 ._.DS_Store
-**.code-workspace
+
+# Editor
+*.code-workspace
+
+# Package managers
+node_modules/
+npm-debug.log
+
+# Compiled files
+dist/
+
+# Environment
 .env
+
+# Temp
 .sass-cache/
-dist
+stats.json
+
