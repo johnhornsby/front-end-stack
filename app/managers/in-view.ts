@@ -77,7 +77,7 @@ class InViewManager {
 
   remove(element: HTMLElement, callback?: ICallBack) {
     if (this.elementsMap.has(element)) {
-      const callbacksSet = this.elementsMap.get(element);
+      const { callbacksSet } = this.elementsMap.get(element);
 
       if (callback && callbacksSet.has(callback)) {
         callbacksSet.delete(callback);

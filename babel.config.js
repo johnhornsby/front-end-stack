@@ -1,6 +1,6 @@
 module.exports = function(api) {
-  //babeljs.io/docs/en/config-files#apicache
-  https: api.cache(true);
+  // babeljs.io/docs/en/config-files#apicache
+  api.cache(true);
 
   const presets = [
     [
@@ -19,7 +19,12 @@ module.exports = function(api) {
     ],
     '@babel/typescript',
   ];
-  const plugins = ['@babel/proposal-class-properties', '@babel/proposal-object-rest-spread'];
+  const plugins = [
+    '@babel/proposal-class-properties',
+    '@babel/proposal-object-rest-spread',
+    '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-proposal-nullish-coalescing-operator',
+  ];
 
   return {
     presets,
