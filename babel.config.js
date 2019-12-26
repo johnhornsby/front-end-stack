@@ -1,6 +1,5 @@
 module.exports = function(api) {
-  // babeljs.io/docs/en/config-files#apicache
-  api.cache(true);
+  api.cache(true); // babeljs.io/docs/en/config-files#apicache
 
   const presets = [
     [

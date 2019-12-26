@@ -1,3 +1,5 @@
+import './util/sentry';
+import svg4everybody from 'svg4everybody'; // IE support for SVG use
 import * as components from './components';
 
 import ViewManager from './managers/view';
@@ -11,6 +13,10 @@ class App {
   }
 
   private init(): void {
+    svg4everybody();
+
+    // Set the flag to show the JS is loaded
+    window.isJsLoaded = true;
     this.initComponents();
     ViewManager.activate();
   }

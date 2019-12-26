@@ -5,6 +5,8 @@
     "constructable",
     "corejs",
     "devtool",
+    "initialise",
+    "nullish",
     "polyfill",
     "wolfy"
   ]
