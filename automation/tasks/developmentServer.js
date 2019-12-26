@@ -28,7 +28,7 @@ gulp.task('developmentServer', callback => {
     })
   );
   app.use(require('webpack-hot-middleware')(compiler));
-  app.use('/', proxy({ target: 'ccc.local', changeOrigin: true }));
+  // app.use('/', proxy({ target: 'http://ccc.local', changeOrigin: true })); // must include the protocol in the target url
 
   // Serve the files on port 3000.
   app.listen(3000, function() {
