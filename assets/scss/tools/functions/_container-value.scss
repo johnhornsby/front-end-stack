@@ -1,0 +1,15 @@
+@function container-value($breakpoint, $key) {
+  @if not variable-exists(container) {
+    @return error("$container does not exist");
+  } @else if not map-has-key($container, $breakpoint) {
+    @return error("$container > '#{$breakpoint}' does not exist");
+  }
+
+  $breakpoint-map: map-get($container, $breakpoint);
+
+  @if not map-has-key($breakpoint-map, $key) {
+    @return error("$breakpoints > #{$breakpoint-map} > #{$key} does not exist");
+  }
+
+  @return map-get($breakpoint-map, $key);
+}

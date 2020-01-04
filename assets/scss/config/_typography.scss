@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "Univers LT 45 Light";
+  src: url("/dist/fonts/IntroBlackCaps.eot?#iefix");
+  src:
+    url("/dist/fonts/IntroBlackCaps.eot?#iefix") format("eot"),
+    url("/dist/fonts/1475948/db1e9a24-d371-4686-ba25-77b32a84e0db.woff2") format("woff2"),
+    url("/dist/fonts/1475948/beca77d5-0862-440e-bddd-321e82d5422c.woff") format("woff"),
+    url("/dist/fonts/1475948/a27ea012-0910-47ac-8294-40726e5a8fd3.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo-500';
+  src: url('/dist/fonts/myfonts/37CB21_4_0.eot');
+  src:
+    url('/dist/fonts/myfonts/37CB21_4_0.eot?#iefix') format('embedded-opentype'),
+    url('/dist/fonts/myfonts/37CB21_4_0.woff2') format('woff2'),
+    url('/dist/fonts/myfonts/37CB21_4_0.woff') format('woff'),
+    url('/dist/fonts/myfonts/37CB21_4_0.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo-300';
+  src: url('/dist/fonts/myfonts/37CB21_2_0.eot');
+  src:
+    url('/dist/fonts/myfonts/37CB21_2_0.eot?#iefix') format('embedded-opentype'),
+    url('/dist/fonts/myfonts/37CB21_2_0.woff2') format('woff2'),
+    url('/dist/fonts/myfonts/37CB21_2_0.woff') format('woff'),
+    url('/dist/fonts/myfonts/37CB21_2_0.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo-100';
+  src: url('/dist/fonts/myfonts/37CB21_3_0.eot');
+  src:
+    url('/dist/fonts/myfonts/37CB21_3_0.eot?#iefix') format('embedded-opentype'),
+    url('/dist/fonts/myfonts/37CB21_3_0.woff2') format('woff2'),
+    url('/dist/fonts/myfonts/37CB21_3_0.woff') format('woff'),
+    url('/dist/fonts/myfonts/37CB21_3_0.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IntroBlackCaps';
+  src: url('/dist/fonts/myfonts/37CB21_5_0.eot');
+  src:
+    url('/dist/fonts/myfonts/37CB21_5_0.eot?#iefix') format('embedded-opentype'),
+    url('/dist/fonts/myfonts/37CB21_5_0.woff2') format('woff2'),
+    url('/dist/fonts/myfonts/37CB21_5_0.woff') format('woff'),
+    url('/dist/fonts/myfonts/37CB21_5_0.ttf') format('truetype');
+  font-display: swap;
+  font-weight: bold;
+}
+
+$typography: (
+  "base-size": 16,
+  "base-font-family": #{'"Univers LT 45 Light"', Arial, sans-serif},
+  "base-line-height": 1.5,
+  "heading-light-font-family": #{'"Museo-100"', Arial, sans-serif},
+  "heading-light-line-height": 1.5,
+  "heading-mid-font-family": #{'"Museo-300"', Arial, sans-serif},
+  "heading-mid-line-height": 1.5,
+  "heading-font-family": #{'"Museo-500"', Arial, sans-serif},
+  "heading-line-height": 1.5,
+  "heading-alt-font-family": #{'"IntroBlackCaps"', Arial, sans-serif},
+  "heading-alt-line-height": 1.125,
+);

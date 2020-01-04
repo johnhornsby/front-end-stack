@@ -1,0 +1,7 @@
+@mixin below($key) {
+  $max-width: breakpoint-value($key) - 1px;
+
+  @media screen and (max-width: #{$max-width}) {
+    @content;
+  }
+}

@@ -1,0 +1,9 @@
+@function color($name) {
+  @if type-of($name) != string {
+    @return error("#{$name} is not a string");
+  } @else if not map-has-key($colors, $name) {
+    @return error("$colors > '#{$name}' does not exist");
+  }
+
+  @return map-get($colors, $name);
+}

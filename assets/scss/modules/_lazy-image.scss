@@ -1,0 +1,105 @@
+@keyframes image-loading-disc {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes loading-feedback-out {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+.LazyImage {
+  $image-fade-in-time: map-get($lazy-image, 'fade-in-time');
+  $image-fade-in-delay: map-get($lazy-image, 'fade-in-delay');
+  $load-feedback-animation-time: 2s;
+  $load-feedback-fade-out-time: 0.25s;
+  $load-feedback-size: 1rem;
+  $load-feedback-border-radius: $load-feedback-size / 2;
+  $load-feedback-error-stroke-width: 2px;
+  $load-feedback-color: rgba(color('mid-grey'), 0.25); // sweet spot
+  $load-feedback-error-color: rgba(color('mid-grey'), 0.25); // sweet spot
+  position: relative;
+
+  &_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity $image-fade-in-time linear $image-fade-in-delay;
+  }
+
+  &--loaded &_background {
+    opacity: 1;
+  }
+
+  &_loadFeedback {
+    position: absolute;
+    display: block;
+    width: $load-feedback-size;
+    height: $load-feedback-size;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    background: $load-feedback-color;
+    border-radius: $load-feedback-border-radius;
+    animation-duration: $load-feedback-animation-time;
+    animation-name: image-loading-disc;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+
+  &--loaded &_loadFeedback {
+    animation-name: loading-feedback-out;
+    animation-iteration-count: 1;
+    animation-duration: $load-feedback-fade-out-time;
+  }
+
+  &--error &_loadFeedback {
+    background: $load-feedback-error-color;
+    animation-name: none;
+  }
+
+  &--error &_loadFeedback::before,
+  &--error &_loadFeedback::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: $load-feedback-size * 0.677; //stylist tweak
+    height: $load-feedback-error-stroke-width;
+    background-color: color('white');
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &--error ~ &_loadFeedback::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}

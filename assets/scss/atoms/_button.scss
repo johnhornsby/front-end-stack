@@ -1,0 +1,45 @@
+.Button {
+  @extend %typography-h-mid-style;
+  @include reset-button;
+  @include ellipsis;
+
+  $hover-time: 0.175s;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  height: map-get($button, "height");
+  padding: 0 map-get($button, "padding");
+  font-size: map-get($button, "font-size");
+  text-overflow: ellipsis;
+  line-height: map-get($button, "height");
+  transition:
+    background-color $hover-time timing-function("out-quad"),
+    color $hover-time timing-function("out-quad"),
+    border-color $hover-time timing-function("out-quad");
+
+  //default is red
+  color: color("white");
+  background-color: color("dark-red");
+  border: solid map-get($button, "border-width") color("dark-red");
+
+  &:hover {
+    background-color: darken(color("dark-red"), 5%);
+  }
+
+  &-invert {
+    background-color: color("white");
+    border-color: color("dark-red");
+    color: color("dark-red");
+
+    &:hover {
+      background-color: darken(color("dark-red"), 5%);
+      color: color("white");
+    }
+  }
+
+  &-loading {
+    text-indent: 9999px;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

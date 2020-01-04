@@ -1,0 +1,13 @@
+@mixin underline($on-hover: false) {
+  @if ($on-hover == false) {
+    text-decoration: underline;
+  } @else {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+}

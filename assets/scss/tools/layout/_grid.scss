@@ -1,0 +1,65 @@
+@function get-grid-item-width($cols, $gutter: 2rem, $col-span: 1, $ie: false) {
+  @if ($gutter == 0) {
+    // stylelint-disable-next-line
+    $gutter: 0rem; // we need to allow a zero with units here to ensure the calc does not error.
+  }
+  $ie11-rounding-workaround: 0.01%; //IE11 can have issues with a slight rounding bug that can knock items to wrap
+  $totalSharedGutterWidth: $gutter * ($cols - 1);
+  $singleSharedGutterWidth: $totalSharedGutterWidth / $cols;
+  $singleColumnWidth: 100% / $cols;
+
+  @if ($ie) {
+    $singleColumnWidth: (100% / $cols) - $ie11-rounding-workaround;
+  }
+  @return calc((#{$singleColumnWidth * $col-span} - #{($singleSharedGutterWidth * $col-span) - (($col-span - 1) * $gutter)}));
+}
+
+@mixin grid-item($cols: 1, $gutter: 2rem, $col-span: 1) {
+  width: get-grid-item-width($cols, $gutter, $col-span);
+
+  body.edge &,
+  body.ie & {
+    width: get-grid-item-width($cols, $gutter, $col-span, true);
+  }
+
+  &:nth-child(#{$cols}n + 1) {
+    margin-left: 0;
+  }
+
+  &:not(:nth-child(#{$cols}n + 1)) {
+    margin-left: $gutter;
+  }
+}
+
+@mixin grid-item-layout($layout) {
+  $start: nth($layout, 1);
+  $end: $start;
+  $columns: nth($layout, 3);
+
+  @if length($layout) == 5 {
+    $end: nth($layout, 3);
+    $columns: nth($layout, 5);
+  }
+
+  @for $i from $start through $end {
+    $column-from-right: $columns + 1 - $i;
+
+    &:nth-of-type(#{$i}):nth-last-of-type(#{$column-from-right}) {
+      @content;
+    }
+  }
+}
+
+@mixin grid-dynamic-layout($layouts) {
+  @if list-separator($layouts) == "space" {
+    @include grid-item-layout($layouts) {
+      @content;
+    }
+  } @else {
+    @each $layout in $layouts {
+      @include grid-item-layout($layout) {
+        @content;
+      }
+    }
+  }
+}

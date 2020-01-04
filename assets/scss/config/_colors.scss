@@ -1,0 +1,33 @@
+$colors: (
+  "black": #000,
+  "white": #fff,
+  "dark-red": #b82d34,
+  "light-red": #d04247,
+  "dark-aqua": #045265,
+  "aqua": #217d93,
+  "dark-grey": #414042,
+  "mid-grey": #6b6b6a,
+  "light-grey": #e6e5e4,
+  "dark-stone": #66615b,
+  "mid-stone": #dddace,
+  "light-stone": #edeae5,
+);
+
+$form-colors: (
+  "fill-background": map-get($colors, "black"),
+  "fill-background-invalid": #e2cdcd,
+  "fill-background-valid": #e2ecdc,
+  "fill-color": map-get($colors, "white"),
+  "fill-placeholder": map-get($colors, "white"),
+  "ghost-border": map-get($colors, "black"),
+  "ghost-border-invalid": #c18888,
+  "ghost-border-valid": #7ac94b,
+  "ghost-color": map-get($colors, "black"),
+  "ghost-placeholder": map-get($colors, "black"),
+  "auto-complete": #f7f7f7,
+);
+
+$page-colors: (
+  "page-background": map-get($colors, "white"),
+  "page-color": map-get($colors, "black"),
+);

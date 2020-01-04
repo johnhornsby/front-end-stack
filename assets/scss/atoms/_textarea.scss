@@ -1,0 +1,37 @@
+.Textarea {
+  @include reset-textarea;
+  height: map-get($textarea, "height");
+  padding: 0 map-get($textarea, "padding");
+  font-size: map-get($textarea, "font-size");
+  line-height: map-get($textarea, "line-height");
+
+  &-ghost {
+    @include placeholder-color(map-get($form-colors, "ghost-placeholder"));
+    border: map-get($textarea, "border-width") solid map-get($form-colors, "ghost-border");
+    color: map-get($form-colors, "ghost-color");
+    transition: border-color duration(1);
+
+    &.invalid {
+      border-color: map-get($form-colors, "ghost-border-invalid");
+    }
+
+    &.valid {
+      border-color: map-get($form-colors, "ghost-border-valid");
+    }
+  }
+
+  &-fill {
+    @include placeholder-color(map-get($form-colors, "fill-placeholder"));
+    color: map-get($form-colors, "fill-color");
+    background-color: map-get($form-colors, "fill-background");
+    transition: background-color duration(1);
+
+    &.invalid {
+      background-color: map-get($form-colors, "fill-background-invalid");
+    }
+
+    &.valid {
+      background-color: map-get($form-colors, "fill-background-valid");
+    }
+  }
+}

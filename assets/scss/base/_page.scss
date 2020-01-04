@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  border: none;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  transition-timing-function: timing-function("out-quad");
+}
+
+html {
+  height: 100%;
+
+  &.scroll-lock {
+    overflow: hidden;
+  }
+
+  @include below(desktop) {
+    &.scroll-lock-mobile {
+      overflow: hidden;
+    }
+  }
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  background-color: map-get($page-colors, "page-background");
+
+  .scroll-lock & {
+    overflow: hidden;
+  }
+
+  @include below(desktop) {
+    .scroll-lock-mobile & {
+      overflow: hidden;
+    }
+  }
+}
+
+figure {
+  display: block;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+// custom styling to remove whitespace caused by injected img on live
+img[src*="pixelg"] {
+  display: block;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  background-color: transparent;
+
+  td,
+  th {
+    padding: 0;
+  }
+}

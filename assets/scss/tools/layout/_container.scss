@@ -1,0 +1,31 @@
+%container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @each $breakpoint, $map in $container {
+    $padding: container-value($breakpoint, "padding");
+
+    @if type-of($padding) != number or unit($padding) != rem {
+      @include error("$container > #{$breakpoint} > 'padding' is not a length in rem");
+    }
+
+    $max-width: container-value($breakpoint, "max-width");
+
+    @if $max-width != "none" {
+      @if type-of($max-width) != number or unit($max-width) != px {
+        @error "$container > #{$breakpoint} > 'max-width' is not a length in px";
+      }
+    }
+
+    @include only($breakpoint) {
+      max-width: $max-width;
+      padding-left: $padding;
+      padding-right: $padding;
+    }
+  }
+}
+
+@mixin container {
+  @extend %container;
+}

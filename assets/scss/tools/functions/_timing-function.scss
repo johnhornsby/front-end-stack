@@ -1,0 +1,9 @@
+@function timing-function($name: "out-quad") {
+  @if not variable-exists(timing-functions) {
+    @return error("$timing-functions does not exist");
+  } @else if not map-has-key($timing-functions, $name) {
+    @return error("$timing-functions > '#{$name}' does not exist");
+  }
+
+  @return map-get($timing-functions, $name);
+}

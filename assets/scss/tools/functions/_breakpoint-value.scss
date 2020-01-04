@@ -1,0 +1,15 @@
+@function breakpoint-value($key) {
+  @if not variable-exists(breakpoints) {
+    @return error("$breakpoints does not exist");
+  } @else if not map-has-key($breakpoints, $key) {
+    @return error("$breakpoints > '#{$key}' does not exist");
+  }
+
+  $value: map-get($breakpoints, $key);
+
+  @if type-of($value) != number or ($value != 0 and unit($value) != px) {
+    @return error("$breakpoints > '#{$key}' (#{$value}) is not a length in px");
+  }
+
+  @return $value;
+}

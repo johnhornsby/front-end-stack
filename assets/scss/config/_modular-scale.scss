@@ -1,0 +1,28 @@
+// Modular scale
+// ---------------------------------------
+
+@function create-scale($rootsize) {
+  @return (
+    // tera:    $rootsize * 7,     // unused
+    // giga:    $rootsize * 6,     // unused
+    // mega:    $rootsize * 5,     // unused
+    // alpha:   $rootsize * 4,     // unused
+    beta:    $rootsize * 3,        // h1+
+    gamma:   $rootsize * 2.166666, // h1, h2
+    delta:   $rootsize * 1.333333, // h3
+    epsilon: $rootsize * 1.111111, // h4
+    zeta:    $rootsize,            // h5
+    eta:     $rootsize / 1.125,    // h6
+    theta:   $rootsize / 1.286,
+  );
+}
+
+// Setting responsive modular-scales. Use appropriate scales for viewport sizes.
+$modular-scale: (
+  scale-mobile: create-scale(16),
+  scale-mobile-large: create-scale(17),
+  scale-tablet: create-scale(17),
+  scale-desktop: create-scale(18),
+  scale-desktop-mid: create-scale(18),
+  scale-desktop-large: create-scale(18),
+);

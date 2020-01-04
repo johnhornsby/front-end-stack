@@ -1,0 +1,17 @@
+$aspect-ratio-4-by-3: (3 / 4) * 100%;
+$aspect-ratio-16-by-9: (9 / 16) * 100%;
+$aspect-ratio-cinema: (1 / 2.4) * 100%;
+
+$aspect-ratios: (
+  "4by3": $aspect-ratio-4-by-3,
+  "16by9": $aspect-ratio-16-by-9,
+  "cinema": $aspect-ratio-cinema,
+);
+
+$aspect-ratio-uses: (
+  "media-image": map-get($aspect-ratios, "16by9"),
+  "video": map-get($aspect-ratios, "16by9"),
+  "cta-square": map-get($aspect-ratios, "4by3"),
+  "cta-wide": map-get($aspect-ratios, "16by9"),
+  "cta-cinema": map-get($aspect-ratios, "cinema"),
+);

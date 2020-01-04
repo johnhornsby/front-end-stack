@@ -1,0 +1,20 @@
+@mixin only($key) {
+  $min-width: breakpoint-value($key);
+  $media-query: "screen and (min-width: #{$min-width})";
+
+  $max-width: null;
+  $key-index: index(map-keys($breakpoints), $key);
+
+  @if $key-index < length($breakpoints) {
+    $next-key: nth(map-keys($breakpoints), $key-index + 1);
+    $max-width: breakpoint-value($next-key) - 1px;
+  }
+
+  @if $max-width != null {
+    $media-query: "#{$media-query} and (max-width: #{$max-width})";
+  }
+
+  @media #{$media-query} {
+    @content;
+  }
+}
