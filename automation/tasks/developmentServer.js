@@ -41,12 +41,12 @@ gulp.task('developmentServer', callback => {
   // Serve the files on port 3000.
   app.listen(3000, function() {
     console.log(`
--------------------------------------
+--------------------------------------
   ${chalk.hex('#FF00FF')('Development Server running on')}
 
-  Exterally: ${chalk.cyan.underline('http://' + ip + ':3000')}
+  Externally: ${chalk.cyan.underline('http://' + ip + ':3000')}
   Locally:   ${chalk.cyan.underline('http://localhost:3000')}
--------------------------------------
+--------------------------------------
 
     `);
   });

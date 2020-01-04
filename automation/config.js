@@ -33,7 +33,7 @@ export default {
   browserSync: {
     baseDir: resolvePath(dest),
     files: [resolvePath(`${dest}/dist/**`), resolvePath(`${dest}/**/*.{cshtml,html}`)],
-    proxy: 'https://typescript.local',
+    proxy: 'https://front-end-stack.local',
   },
   clean: {
     src: resolvePath(`${dest}/dist`),
@@ -57,7 +57,6 @@ export default {
       inlineHead: resolvePath('../app/inline/head.ts'),
       inlineBody: resolvePath('../app/inline/body.ts'),
     },
-    // lint: resolvePath('../app/**/*.{js,jsx}'),
     path: resolvePath(`${dest}/dist/js`),
     chunkFilename: '[name].js',
     filename: '[name].js',

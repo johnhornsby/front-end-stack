@@ -58,7 +58,6 @@
     "@sentry/browser": "^5.10.2",
     "@types/svg4everybody": "^2.1.1",
     "core-js": "^3.6.0",
-    "save": "^2.4.0",
     "svg4everybody": "^2.1.9",
     "wolfy87-eventemitter": "^5.2.8"
   }
