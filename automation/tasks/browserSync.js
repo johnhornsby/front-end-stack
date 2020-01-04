@@ -8,10 +8,9 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 /* eslint-enable import/no-extraneous-dependencies */
 
 import config from '../config';
-import webpackConfig from '../webpack/development';
+import webpackConfig from '../webpack/development.config';
 
-
-gulp.task('browserSync', (callback) => {
+gulp.task('browserSync', callback => {
   const bundler = webpack(webpackConfig);
 
   const options = {
@@ -24,7 +23,6 @@ gulp.task('browserSync', (callback) => {
       middleware: [
         webpackDevMiddleware(bundler, {
           publicPath: config.js.publicPath,
-          noInfo: true,
         }),
         webpackHotMiddleware(bundler),
       ],
@@ -32,10 +30,13 @@ gulp.task('browserSync', (callback) => {
   };
 
   if (config.browserSync.proxy) {
-    options.server.middleware.push(httpProxyMiddleware({
-      target: config.browserSync.proxy,
-      changeOrigin: true,
-    }));
+    options.server.middleware.push(
+      httpProxyMiddleware({
+        target: config.browserSync.proxy,
+        changeOrigin: true,
+        secure: false,
+      })
+    );
   }
 
   browserSync.create();

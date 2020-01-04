@@ -5,9 +5,14 @@
     "constructable",
     "corejs",
     "devtool",
+    "iface",
+    "ifaces",
+    "ifname",
     "initialise",
+    "initialised",
     "nullish",
     "polyfill",
+    "uglifyjs",
     "wolfy"
   ]
 }

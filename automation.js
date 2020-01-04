@@ -1,6 +1,6 @@
 import { task, series, parallel } from 'gulp';
 
-// import './automation/tasks/browserSync';
+import './automation/tasks/browserSync';
 import './automation/tasks/developmentServer';
 import './automation/tasks/clean';
 import './automation/tasks/fonts';
@@ -15,7 +15,7 @@ task(
   series(
     'clean',
     parallel('fonts', 'icons:development', 'images:development', 'scss:development'),
-    parallel('watch', 'developmentServer')
+    parallel('watch', 'browserSync')
   )
 );
 

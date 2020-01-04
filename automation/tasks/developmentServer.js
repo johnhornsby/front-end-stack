@@ -19,7 +19,7 @@ gulp.task('developmentServer', callback => {
 
   const compiler = webpack(webpackConfig);
 
-  app.use('/', express.static('./'));
+  // app.use('/', express.static('./'));
   // Tell express to use the webpack-dev-middleware and use the webpack.config.js
   // configuration file as a base.
   app.use(
@@ -28,7 +28,15 @@ gulp.task('developmentServer', callback => {
     })
   );
   app.use(require('webpack-hot-middleware')(compiler));
-  app.use('/', proxy({ target: 'ccc.local', changeOrigin: true }));
+  app.use(
+    '/',
+    proxy({
+      target: 'https://typescript.local',
+      changeOrigin: true,
+      secure: false,
+      logLevel: 'debug',
+    })
+  );
 
   // Serve the files on port 3000.
   app.listen(3000, function() {

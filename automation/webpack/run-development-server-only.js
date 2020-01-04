@@ -6,20 +6,16 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 var proxy = require('http-proxy-middleware');
 
 const app = express();
-const config = require('./common.config.js').default;
+const webpackDevelopmentConfig = require('./development.config.js').default;
 
-config.mode = 'development';
-config.devtool = 'inline-source-map';
-config.plugins.push(new webpack.HotModuleReplacementPlugin());
-
-const compiler = webpack(config);
+const compiler = webpack(webpackDevelopmentConfig);
 
 app.use('/', express.static('./'));
 // Tell express to use the webpack-dev-middleware and use the webpack.config.js
 // configuration file as a base.
 app.use(
   webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
+    publicPath: webpackDevelopmentConfig.output.publicPath,
   })
 );
 app.use(require('webpack-hot-middleware')(compiler));

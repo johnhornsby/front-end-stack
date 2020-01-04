@@ -3,21 +3,21 @@ const path = require('path');
 const webpack = require('webpack');
 /* eslint-enable import/no-extraneous-dependencies */
 
+import config from '../config';
+
 export default {
   // this outputs source maps to the js folder
   devtool: 'source-map',
 
   mode: 'production',
 
-  entry: {
-    app: ['webpack-hot-middleware/client', './app/app.ts'],
-  },
+  entry: config.js.entry,
 
   output: {
-    path: path.resolve(__dirname, '../../dist/js/'),
-    chunkFilename: '[name].js',
-    filename: '[name].js',
-    publicPath: '/dist/js/',
+    path: config.js.path,
+    chunkFilename: config.js.chunkFilename,
+    filename: config.js.filename,
+    publicPath: config.js.publicPath,
   },
 
   module: {
@@ -43,24 +43,14 @@ export default {
     // react: 'React',
     // 'react-dom': 'ReactDom',
   },
-  plugins: [],
-  // plugins: [
-  //   new webpack.DefinePlugin({
-  //     __DEVELOPMENT__: false,
-  //     __CLIENT__: true,
-  //     __SERVER__: false,
-  //     'process.env': {
-  //       NODE_ENV: JSON.stringify('production'),
-  //     },
-  //   }),
-  // ],
-  // optimization: {
-  //   minimizer: [
-  //     new UglifyJsPlugin({
-  //       cache: true,
-  //       parallel: true,
-  //       sourceMap: true,
-  //     }),
-  //   ],
-  // },
+  plugins: [
+    new webpack.DefinePlugin({
+      __DEVELOPMENT__: false,
+      __CLIENT__: true,
+      __SERVER__: false,
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+  ],
 };

@@ -1,18 +1,23 @@
 <html>
   <head>
     <title>Typescript Hello Stack</title>
+    <script src="/dist/js/inlineHead.js"></script>
   </head>
   <body>
     <header data-component="Header"></header>
     <main>
         Hello Typescript
-        <!-- <img src="/assets/icons/facebook.svg" /> -->
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <use xlink:href="/dist/icons/icons.svg#facebook" />
         </svg>
-        <div data-component="DynamicWidget" style="height: 1px;"></div>
+        <div data-component="DynamicWidget" style="height: 1px;">
+          <div class="LazyImage" data-src="/dist/images/meta/icon_192x192.png">
+            <div class="LazyImage_background" style="width: 192px; height: 192px;"></div>
+          </div>
+        </div>
     </main>
     <footer data-component="Footer"></footer>
+    <script src="/dist/js/inlineBody.js"></script>
     <script src="/dist/js/app.js"></script>
   </body>
 </html>

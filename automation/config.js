@@ -30,11 +30,11 @@ let dest = flags.production ? '../../../../../a' : developmentPath;
 // }
 
 export default {
-  // browserSync: {
-  //   baseDir: resolvePath(dest),
-  //   files: [resolvePath(`${dest}/dist/**`), resolvePath(`${dest}/**/*.{cshtml,html}`)],
-  //   proxy: 'http://ccc.local',
-  // },
+  browserSync: {
+    baseDir: resolvePath(dest),
+    files: [resolvePath(`${dest}/dist/**`), resolvePath(`${dest}/**/*.{cshtml,html}`)],
+    proxy: 'https://typescript.local',
+  },
   clean: {
     src: resolvePath(`${dest}/dist`),
   },
@@ -54,8 +54,8 @@ export default {
   js: {
     entry: {
       app: [resolvePath('../app/app.ts')],
-      // inlineHead: resolvePath('../app/inline/head.ts'),
-      // inlineBody: resolvePath('../app/inline/body.ts'),
+      inlineHead: resolvePath('../app/inline/head.ts'),
+      inlineBody: resolvePath('../app/inline/body.ts'),
     },
     // lint: resolvePath('../app/**/*.{js,jsx}'),
     path: resolvePath(`${dest}/dist/js`),
