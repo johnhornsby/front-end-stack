@@ -5,7 +5,7 @@
 - Jest
 - Revision
 - React
-- SVG Sprite Sheet with svg4everybody
+- SVG Sprite Sheet with svg4everybody     !!! DONE
 - Sync
 - Sass
 - Stats                                   !!! DONE

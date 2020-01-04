@@ -5,6 +5,8 @@
     "constructable",
     "corejs",
     "devtool",
+    "esModuleInterop",
+    "esnext",
     "iface",
     "ifaces",
     "ifname",
