@@ -31,7 +31,7 @@ gulp.task('developmentServer', callback => {
   app.use(
     '/',
     proxy({
-      target: 'https://typescript.local',
+      target: 'https://front-end-stack.local',
       changeOrigin: true,
       secure: false,
       logLevel: 'debug',
