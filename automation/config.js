@@ -1,14 +1,18 @@
 import path from 'path';
+import slash from 'slash';
 /* eslint-disable import/no-extraneous-dependencies */
 import dotenv from 'dotenv';
 import args from 'args';
 /* eslint-enable import/no-extraneous-dependencies */
 
-const resolvePath = relativePath => path.resolve(__dirname, relativePath);
+const resolvePath = (relativePath, isGlob = false) => {
+  let systemPath = path.resolve(__dirname, relativePath);
+  return isGlob ? slash(systemPath) : systemPath;
+};
 
 // aquire .env file param
 dotenv.config({
-  path: resolvePath('.env'),
+  path: resolvePath('../.env'),
 });
 
 // aquire production param
@@ -33,7 +37,7 @@ export default {
   browserSync: {
     baseDir: resolvePath(dest),
     files: [resolvePath(`${dest}/dist/**`), resolvePath(`${dest}/**/*.{cshtml,html}`)],
-    proxy: 'https://front-end-stack.local',
+    // proxy: 'https://front-end-stack.local',
   },
   clean: {
     src: resolvePath(`${dest}/dist`),
@@ -70,8 +74,7 @@ export default {
   },
   scss: {
     src: [resolvePath('../assets/scss/styles.scss')],
-    watch: resolvePath('../assets/scss/**/*.scss'),
-    lint: resolvePath('../assets/scss/**/*.scss'),
+    watch: resolvePath('../assets/scss/**/*.scss', true),
     dest: resolvePath(`${dest}/dist/css`),
     filename: 'styles.css',
   },

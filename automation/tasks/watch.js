@@ -1,13 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import gulp from 'gulp';
-import watch from 'gulp-watch';
+import { task, series, watch } from 'gulp';
 /* eslint-enable import/no-extraneous-dependencies */
 
 import config from '../config';
 
 import './scss';
 
-
-gulp.task('watch', () => {
-  watch(config.scss.watch, () => gulp.start('scss:development'));
+task('watch', () => {
+  watch(config.scss.watch, series('scss:development'));
 });

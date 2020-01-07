@@ -28,16 +28,10 @@ export default {
         include: [path.resolve(__dirname, '../../app')],
         exclude: /node_modules/,
       },
-      // {
-      //   enforce: 'pre',
-      //   test: /\.js$/,
-      //   loader: 'source-map-loader',
-      // },
     ],
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-    // modules: ["app", "node_modules"],
   },
   externals: {
     // react: 'React',
